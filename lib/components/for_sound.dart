@@ -1,44 +1,67 @@
 import 'package:audioplayers/audioplayers.dart';
 
-final AudioPlayer _audioPlayer = AudioPlayer();
-bool _isPlaying = false; // لمعرفة حالة الصوت
-String? _currentSound; // لمعرفة الصوت المشغل حاليًا
+class Item_Sound {
+  static AudioPlayer? _audioPlayer; // اجعل المشغل قابلًا لأن يكون null
+  static bool _isPlaying = false;
+  static String? _currentSound;
 
-void playSound(String itemSoudn) async {
-  if (_isPlaying && _currentSound == itemSoudn) {
-    // إذا كان الصوت نفسه قيد التشغيل، قم بإيقافه
-    await _audioPlayer.stop();
-    () {
+  /// تهيئة مشغل الصوت إذا لم يكن موجودًا
+  static void _initializePlayer() {
+    if (_audioPlayer == null) {
+      _audioPlayer = AudioPlayer();
+    }
+  }
+
+  /// تشغيل الصوت
+  static void playSound(String itemSound) async {
+    _initializePlayer(); // تأكد من تهيئة المشغل
+
+    if (_isPlaying && _currentSound == itemSound) {
+      // إذا كان الصوت نفسه قيد التشغيل، قم بإيقافه
+      await _audioPlayer!.stop();
       _isPlaying = false;
       _currentSound = null;
-    };
-    return;
-  }
+      return;
+    }
 
-  if (_isPlaying) {
-    // إذا كان هناك صوت آخر قيد التشغيل، قم بإيقافه أولاً
-    await _audioPlayer.stop();
-  }
+    if (_isPlaying) {
+      // إذا كان هناك صوت آخر قيد التشغيل، قم بإيقافه أولاً
+      await _audioPlayer!.stop();
+    }
 
-  try {
-    () {
-      _isPlaying = true;
-      _currentSound = itemSoudn;
-    };
+    _isPlaying = true;
+    _currentSound = itemSound;
 
-    await _audioPlayer.play(AssetSource(itemSoudn));
+    try {
+      await _audioPlayer!.play(AssetSource(itemSound));
 
-    _audioPlayer.onPlayerComplete.listen((event) {
-      () {
+      // عند انتهاء الصوت
+      _audioPlayer!.onPlayerComplete.listen((event) {
         _isPlaying = false;
         _currentSound = null;
-      };
-    });
-  } catch (e) {
-    print('Error: $e');
-    () {
+      });
+    } catch (e) {
+      print('Error: $e');
       _isPlaying = false;
       _currentSound = null;
-    };
+    }
+  }
+
+  /// إيقاف الصوت
+  static void stopSound() {
+    if (_isPlaying) {
+      _audioPlayer?.stop();
+      _isPlaying = false;
+      _currentSound = null;
+    }
+  }
+
+  /// تنظيف موارد الصوت
+  static void disposeAudioPlayer() {
+    if (_isPlaying) {
+      _audioPlayer?.stop();
+    }
+    _audioPlayer?.dispose();
+    _audioPlayer = null; // اجعل الكائن null للتأكد من إعادة التهيئة عند الحاجة
   }
 }

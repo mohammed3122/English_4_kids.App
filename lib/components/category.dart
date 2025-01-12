@@ -26,6 +26,14 @@ class Category extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 10,
+              spreadRadius: 7,
+              blurStyle: BlurStyle.outer,
+              color: categoryNameColor,
+            )
+          ],
           color: categoyColor,
           borderRadius: BorderRadius.circular(50),
         ),
@@ -67,15 +75,18 @@ class Category extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 5),
+            Container(
+              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                BoxShadow(
+                  color: Color(0xff719fb2),
+                  blurRadius: 2,
+                  spreadRadius: 9,
+                  blurStyle: BlurStyle.inner,
+                )
+              ]),
               child: CircleAvatar(
-                radius: 32,
-                backgroundColor: Colors.blue,
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage(categoryImage),
-                ),
+                radius: 35,
+                backgroundImage: AssetImage(categoryImage),
               ),
             )
           ],

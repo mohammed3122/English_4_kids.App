@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 113, 159, 178),
       appBar: AppBar(
+        // shape:Border.(symmetric())
         backgroundColor: Colors.blue,
         title: Align(
           alignment: Alignment.topRight,
@@ -76,10 +77,11 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Category(
                   categoryEnName: 'Numbers',
-                  categoryNameColor: Color.fromARGB(255, 25, 25, 112),
+                  categoryNameColor: Color.fromARGB(255, 29, 121, 163),
                   categoryArName: 'الأرقام',
                   categoyColor: Color.fromARGB(255, 255, 223, 79),
-                  categoryImage: 'assets/category_icons/numbers_icon.jpeg',
+                  categoryImage:
+                      'assets/image/category_icons/numbers_icon.jpeg',
                   navi: () {
                     final player = AudioPlayer();
                     player.play(
@@ -91,14 +93,14 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Category(
                   categoryEnName: 'Family ',
                   categoryNameColor: Color.fromARGB(255, 128, 0, 128),
                   categoryArName: 'العائلة',
                   categoyColor: Color.fromARGB(255, 255, 182, 193),
-                  categoryImage: 'assets/category_icons/family_icon.jpeg',
+                  categoryImage: 'assets/image/category_icons/family_icon.jpeg',
                   navi: () {
                     final player = AudioPlayer();
                     player
@@ -110,14 +112,14 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Category(
                   categoryEnName: 'Colors',
                   categoryNameColor: Colors.white,
                   categoryArName: 'الألوان',
                   categoyColor: Color.fromARGB(255, 218, 112, 214),
-                  categoryImage: 'assets/category_icons/colors_icon.png',
+                  categoryImage: 'assets/image/category_icons/colors_icon.png',
                   navi: () {
                     final player = AudioPlayer();
                     player
@@ -129,14 +131,14 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Category(
                   categoryEnName: 'Words',
                   categoryNameColor: Colors.black,
                   categoryArName: 'كلمات',
                   categoyColor: Color.fromARGB(255, 135, 206, 250),
-                  categoryImage: 'assets/category_icons/words_icon.jpeg',
+                  categoryImage: 'assets/image/category_icons/words_icon.jpeg',
                   navi: () {
                     final player = AudioPlayer();
                     player
@@ -148,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Category(
                   categoryEnName: 'Verbs',
@@ -167,24 +169,25 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Category(
                   categoryEnName: 'Sentence',
                   categoryNameColor: Color.fromARGB(255, 0, 100, 0),
                   categoryArName: 'جمل يومية',
                   categoyColor: Color.fromARGB(255, 144, 238, 144),
-                  categoryImage: 'assets/category_icons/sentence.jpeg',
+                  categoryImage: 'assets/image/category_icons/sentence.jpeg',
                   navi: () {
                     final player = AudioPlayer();
                     player.play(
                         AssetSource('sounds/category_sounds/sentences.mp3'));
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return SentenceScreen();
+                      return Sentences_Screen();
                     }));
                   },
                 ),
+                SizedBox(height: 20),
               ],
             ),
           );

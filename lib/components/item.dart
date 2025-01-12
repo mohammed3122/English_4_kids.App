@@ -8,43 +8,69 @@ class Item extends StatelessWidget {
     required this.itemEn,
     required this.itemAr,
     required this.itemSound,
+    required this.itemColor,
+    this.itemPictureColor,
+    required this.itemNameColor,
   });
 
   String itemPicture;
   String itemEn;
   String itemAr;
   String itemSound;
+  Color itemColor;
+  Color? itemPictureColor;
+  Color itemNameColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       height: 70,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 255, 223, 79),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10,
+            spreadRadius: 6,
+            blurStyle: BlurStyle.inner,
+            color: Colors.white,
+          )
+        ],
+        color: itemColor,
         borderRadius: BorderRadius.circular(50),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(5),
+          Container(
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 211, 205, 147),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 1,
+                  spreadRadius: 6,
+                  blurStyle: BlurStyle.inner,
+                  color: Colors.white,
+                )
+              ],
+              // color: itemColor,
+              borderRadius: BorderRadius.circular(50),
+            ),
             child: CircleAvatar(
               radius: 35,
-              backgroundColor: const Color.fromARGB(255, 211, 205, 147),
+              backgroundColor: itemPictureColor,
               backgroundImage: AssetImage(
                 itemPicture,
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(left: 12.0),
             child: Column(
               children: [
                 Text(
                   itemEn,
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 25, 25, 112),
+                  style: TextStyle(
+                    color: itemNameColor,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'ElMessiri',
@@ -73,10 +99,10 @@ class Item extends StatelessWidget {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.white,
                     blurRadius: 10,
-                    spreadRadius: 2,
-                    blurStyle: BlurStyle.outer,
+                    spreadRadius: 3,
+                    blurStyle: BlurStyle.inner,
+                    color: Colors.white,
                   )
                 ],
                 shape: BoxShape.circle,
@@ -85,7 +111,7 @@ class Item extends StatelessWidget {
               child: Center(
                 child: IconButton(
                   onPressed: () {
-                    playSound(itemSound);
+                    Item_Sound.playSound(itemSound);
                   },
                   icon: Icon(
                     Icons.play_circle_fill_rounded,
