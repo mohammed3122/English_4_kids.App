@@ -157,7 +157,7 @@ class HomeScreen extends StatelessWidget {
                   categoryNameColor: Color.fromARGB(255, 0, 0, 139),
                   categoryArName: 'أفعال',
                   categoyColor: Color.fromARGB(255, 255, 165, 0),
-                  categoryImage: 'assets/category_icons/verbs_icon.png',
+                  categoryImage: 'assets/image/category_icons/verbs_icon.png',
                   navi: () {
                     final player = AudioPlayer();
                     player

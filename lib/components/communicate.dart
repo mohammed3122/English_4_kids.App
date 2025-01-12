@@ -6,178 +6,204 @@ void communicateMe(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
+        scrollable: true,
         title: const Text(
           'وسائل التواصل مع مطور التطبيق',
           style: TextStyle(
             fontFamily: 'ElMessiri',
             fontSize: 17,
+            fontWeight: FontWeight.bold,
             color: Colors.blue,
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Row(
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.black,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/image/me.jpg'),
-                    radius: 28,
+        content: SizedBox(
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.black,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/image/me.jpg'),
+                      radius: 28,
+                    ),
                   ),
-                ),
-                SizedBox(width: 20),
-                Text(
-                  'Mohammad Awd',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'ElMessiri',
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(height: 10),
-            InkWell(
-              borderRadius: BorderRadius.circular(20),
-              splashColor: Colors.yellow,
-              onTap: () => _launchUrl('mailto:mahometawad@gmail.com',
-                  'لا يمكن فتح البريد الإلكتروني', context),
-              child: const ListTile(
-                leading: Icon(
-                  Icons.email,
-                  color: Colors.red,
-                  size: 28,
-                ),
-                title: Text('Mail للتواصل عبر الـ ',
+                  SizedBox(width: 20),
+                  Text(
+                    'Mohammad Awd',
                     style: TextStyle(
-                      fontFamily: 'ElMessiri',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    )),
-              ),
-            ),
-            InkWell(
-              borderRadius: BorderRadius.circular(20),
-              splashColor: Colors.yellow,
-              onTap: () => _launchUrl('https://wa.me/qr/IOR42CPASHPXD1',
-                  'لا يمكن فتح تطبيق الواتساب', context),
-              child: const ListTile(
-                leading: Icon(
-                  Icons.phone,
-                  color: Colors.green,
-                  size: 28,
-                ),
-                title: Text('للتواصل عبر الواتساب',
-                    style: TextStyle(
-                      fontFamily: 'ElMessiri',
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    )),
-              ),
-            ),
-            InkWell(
-              borderRadius: BorderRadius.circular(20),
-              splashColor: Colors.yellow,
-              onTap: () => _launchUrl(
-                  'https://www.facebook.com/profile.php?id=100018268714697&locale=ar_AR',
-                  'لا يمكن فتح الفيس بوك',
-                  context),
-              child: const ListTile(
-                leading: Icon(
-                  Icons.facebook,
-                  color: Color.fromARGB(255, 45, 49, 240),
-                  size: 28,
-                ),
-                title: Text('للتواصل عبر الفيس بوك',
-                    style: TextStyle(
-                      fontFamily: 'ElMessiri',
-                      color: Color.fromARGB(255, 45, 49, 240),
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    )),
-              ),
-            ),
-            InkWell(
-              borderRadius: BorderRadius.circular(20),
-              splashColor: Colors.yellow,
-              onTap: () => _launchUrl('https://t.me/MoDev_apps_3',
-                  'لا يمكن فتح التليجرام', context),
-              child: const ListTile(
-                leading: Icon(
-                  Icons.telegram,
-                  color: Color.fromARGB(255, 33, 115, 182),
-                  size: 28,
-                ),
-                title: Text('تطبيقاتنا',
-                    style: TextStyle(
-                      fontFamily: 'ElMessiri',
-                      color: Color.fromARGB(255, 33, 115, 182),
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                    )),
+                      fontFamily: 'ElMessiri',
+                    ),
+                  )
+                ],
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Column(
-              children: [
-                Text(
-                  'By :',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'ElMessiri',
-                    wordSpacing: 2,
+              const SizedBox(height: 10),
+              InkWell(
+                borderRadius: BorderRadius.circular(20),
+                splashColor: const Color.fromARGB(255, 147, 216, 138),
+                onTap: () => _launchUrl('https://forms.gle/AoEW4jVnJPfd73fM8',
+                    'لا يمكنك تقييم التطبيق', context),
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.star,
+                    color: Color(0xFFFFD700),
+                    size: 28,
                   ),
+                  title: Text('تقييم التطبيق',
+                      style: TextStyle(
+                        fontFamily: 'ElMessiri',
+                        color: Color(0xFFFFD700),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image(
-                      image: AssetImage('assets/image/logo.png'),
-                      width: 30,
-                      height: 30,
-                    ),
-                    Text(
-                      'M',
+              ),
+              Divider(
+                thickness: 1,
+              ),
+              InkWell(
+                borderRadius: BorderRadius.circular(20),
+                splashColor: Colors.yellow,
+                onTap: () => _launchUrl('mailto:mahometawad@gmail.com',
+                    'لا يمكن فتح البريد الإلكتروني', context),
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.red,
+                    size: 28,
+                  ),
+                  title: Text('Mail للتواصل عبر الـ ',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontFamily: 'ElMessiri',
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'PlayfairDisplay',
-                        wordSpacing: 5,
-                        color: Colors.green,
-                      ),
-                    ),
-                    Text(
-                      'oDe',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'PlayfairDisplay',
-                        wordSpacing: 2,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    Text(
-                      'v',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'PlayfairDisplay',
-                        wordSpacing: 2,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
+                        color: Colors.red,
+                      )),
                 ),
-              ],
-            )
-          ],
+              ),
+              InkWell(
+                borderRadius: BorderRadius.circular(20),
+                splashColor: Colors.yellow,
+                onTap: () => _launchUrl('https://wa.me/qr/IOR42CPASHPXD1',
+                    'لا يمكن فتح تطبيق الواتساب', context),
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    color: Colors.green,
+                    size: 28,
+                  ),
+                  title: Text('للتواصل عبر الواتساب',
+                      style: TextStyle(
+                        fontFamily: 'ElMessiri',
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      )),
+                ),
+              ),
+              InkWell(
+                borderRadius: BorderRadius.circular(20),
+                splashColor: Colors.yellow,
+                onTap: () => _launchUrl(
+                    'https://www.facebook.com/profile.php?id=100018268714697&locale=ar_AR',
+                    'لا يمكن فتح الفيس بوك',
+                    context),
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.facebook,
+                    color: Color.fromARGB(255, 45, 49, 240),
+                    size: 28,
+                  ),
+                  title: Text('للتواصل عبر الفيس بوك',
+                      style: TextStyle(
+                        fontFamily: 'ElMessiri',
+                        color: Color.fromARGB(255, 45, 49, 240),
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ),
+              InkWell(
+                borderRadius: BorderRadius.circular(20),
+                splashColor: Colors.yellow,
+                onTap: () => _launchUrl('https://t.me/MoDev_apps_3',
+                    'لا يمكن فتح التليجرام', context),
+                child: const ListTile(
+                  leading: Icon(
+                    Icons.telegram,
+                    color: Color.fromARGB(255, 33, 115, 182),
+                    size: 28,
+                  ),
+                  title: Text('تطبيقاتنا',
+                      style: TextStyle(
+                        fontFamily: 'ElMessiri',
+                        color: Color.fromARGB(255, 33, 115, 182),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Column(
+                children: [
+                  Text(
+                    'By :',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'ElMessiri',
+                      wordSpacing: 2,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        image: AssetImage('assets/image/logo.png'),
+                        width: 30,
+                        height: 30,
+                      ),
+                      Text(
+                        'M',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'PlayfairDisplay',
+                          wordSpacing: 5,
+                          color: Colors.green,
+                        ),
+                      ),
+                      Text(
+                        'oDe',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'PlayfairDisplay',
+                          wordSpacing: 2,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      Text(
+                        'v',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'PlayfairDisplay',
+                          wordSpacing: 2,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
         actions: [
           TextButton(

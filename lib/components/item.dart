@@ -4,7 +4,7 @@ import 'package:learn_english/components/for_sound.dart';
 // ignore: must_be_immutable
 class Item extends StatelessWidget {
   Item({
-    required this.itemPicture,
+    this.itemPicture,
     required this.itemEn,
     required this.itemAr,
     required this.itemSound,
@@ -13,7 +13,7 @@ class Item extends StatelessWidget {
     required this.itemNameColor,
   });
 
-  String itemPicture;
+  String? itemPicture;
   String itemEn;
   String itemAr;
   String itemSound;
@@ -41,28 +41,32 @@ class Item extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 211, 205, 147),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 1,
-                  spreadRadius: 6,
-                  blurStyle: BlurStyle.inner,
-                  color: Colors.white,
+          itemPicture == null
+              ? SizedBox(
+                  width: 30,
                 )
-              ],
-              // color: itemColor,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: CircleAvatar(
-              radius: 35,
-              backgroundColor: itemPictureColor,
-              backgroundImage: AssetImage(
-                itemPicture,
-              ),
-            ),
-          ),
+              : Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 211, 205, 147),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 1,
+                        spreadRadius: 6,
+                        blurStyle: BlurStyle.inner,
+                        color: Colors.white,
+                      )
+                    ],
+                    // color: itemColor,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: CircleAvatar(
+                    radius: 35,
+                    backgroundColor: itemPictureColor,
+                    backgroundImage: AssetImage(
+                      itemPicture!,
+                    ),
+                  ),
+                ),
           Padding(
             padding: const EdgeInsets.only(left: 12.0),
             child: Column(
