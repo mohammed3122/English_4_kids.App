@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:learn_english/components/for_sound.dart';
 
 // ignore: must_be_immutable
-class Item extends StatelessWidget {
-  Item({
+class SentencesItem extends StatelessWidget {
+  SentencesItem({
     this.itemPicture,
     required this.itemEn,
     required this.itemAr,
     required this.itemSound,
-    required this.itemColor,
+    this.itemColor,
     this.itemPictureColor,
-    required this.itemNameColor,
+    this.itemNameColor,
   });
 
   String? itemPicture;
   String itemEn;
   String itemAr;
   String itemSound;
-  Color itemColor;
+  Color? itemColor;
   Color? itemPictureColor;
-  Color itemNameColor;
+  Color? itemNameColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,12 @@ class Item extends StatelessWidget {
             color: Colors.white,
           )
         ],
-        color: itemColor,
+        color: Color.fromARGB(255, 144, 238, 144),
         borderRadius: BorderRadius.circular(50),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
         children: [
           itemPicture == null
               ? SizedBox(
@@ -68,14 +69,15 @@ class Item extends StatelessWidget {
                   ),
                 ),
           Padding(
-            padding: const EdgeInsets.only(left: 12.0),
+            padding: const EdgeInsets.only(left: 3.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   itemEn,
                   style: TextStyle(
-                    color: itemNameColor,
-                    fontSize: 24,
+                    color: Color.fromARGB(255, 0, 100, 0),
+                    fontSize: 17.5,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'ElMessiri',
                   ),
@@ -84,7 +86,7 @@ class Item extends StatelessWidget {
                   itemAr,
                   style: const TextStyle(
                     color: Color.fromARGB(255, 109, 121, 122),
-                    fontSize: 20,
+                    fontSize: 17.5,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'ElMessiri',
                   ),
@@ -95,8 +97,8 @@ class Item extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: Container(
-              width: 45,
-              height: 45,
+              width: 30,
+              height: 30,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -109,17 +111,17 @@ class Item extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: const Color.fromARGB(255, 41, 119, 184),
               ),
-              child: Center(
-                child: IconButton(
-                  onPressed: () {
-                    Item_Sound.playSound(itemSound);
-                  },
-                  icon: Icon(
-                    Icons.play_circle_fill_rounded,
-                    size: 30,
-                    color: const Color.fromARGB(255, 7, 236, 15),
-                  ),
+              child: IconButton(
+                onPressed: () {
+                  Item_Sound.playSound(itemSound);
+                },
+                icon: Icon(
+                  Icons.play_circle_fill_rounded,
+                  size: 25,
+                  color: const Color.fromARGB(255, 7, 236, 15),
                 ),
+                constraints: BoxConstraints(),
+                padding: EdgeInsets.zero, // لإزالة المسافة الداخلية الافتراضية
               ),
             ),
           ),

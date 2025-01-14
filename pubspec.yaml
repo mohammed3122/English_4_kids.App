@@ -78,6 +78,10 @@ flutter:
     - assets/sounds/family_sounds/
     - assets/image/colors_images/
     - assets/sounds/colors_sounds/
+    - assets/sounds/questions_sounds/
+    - assets/sounds/ansers_sounds/
+    - assets/image/anser_sentences/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

@@ -4,7 +4,7 @@ import 'package:learn_english/components/communicate.dart';
 import 'package:learn_english/screens/colors_screen.dart';
 import 'package:learn_english/screens/family_screen.dart';
 import 'package:learn_english/screens/numbers_screen.dart';
-import 'package:learn_english/screens/sentence.dart';
+import 'package:learn_english/screens/sentence_screen.dart';
 import 'package:learn_english/screens/verbs_screen.dart';
 import 'package:learn_english/screens/words_screen.dart';
 import 'package:audioplayers/audioplayers.dart';
